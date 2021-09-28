@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Classifier</title>
+    <title>Image Captioning</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('statics', filename='style.css') }}"/>
 </head>
 
 
@@ -43,7 +43,7 @@
 
     
     <div style="text-align: center">
-        <img src="{{url_for('static', filename=image_path)}}">
+        <img src="{{url_for('statics', filename=image_path)}}">
     </div>
 
     <h1>{{ prediction }}</h1>
