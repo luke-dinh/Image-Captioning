@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}"/>
+</head>
+
+
+<body>
+
+    <form action="upload_zip" method="POST" enctype="multipart/form-data">
+        <button id='navigation' type="submit">Upload a zip</button>
+    </form>
+    
+    <!-- <div class="dropdown">
+        <button class="dropbtn">Choose label</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('get_img')}}">Image</a>
+                <a href="{{ url_for('get_box')}}">Box</a>
+                <a href="{{ url_for('get_mask')}}">Mask</a>
+            </div>
+    </div> -->
+
+    <p><h1>
+        <i class="material-icons md-48">
+        image_search
+        </i>
+        Image Captioning
+    </h1></p>
+
+    <form action="display" method="POST" enctype="multipart/form-data">
+        <input type="file" id="file" name="input_file" accept="image/*"/>
+        <label for="file">
+            <i class="material-icons">
+                add_photo_alternate
+            </i>
+            Upload an image
+        </label>
+        <button id='predict' type="submit">Predict</button>
+    </form>
+
+    
+    <div style="text-align: center">
+        <img src="{{url_for('static', filename=image_path)}}">
+    </div>
+
+    <h1>{{ prediction }}</h1>
+
+
+
+</body>
+
+
+</html>
