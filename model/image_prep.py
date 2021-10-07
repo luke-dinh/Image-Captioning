@@ -1,8 +1,10 @@
-import glob 
+import glob
+from load_des import prep_cap
 
-main_path = "flickr8k_dataset..."
+main_path = "flickr8k_dataset"
+cap_path = "captions.txt"
 
-img = glob.glob(main_path + '*.jpg')
+img = glob.glob(main_path + '/images' + '*.jpg')
 train_path = main_path + '/'
 train_img = open(train_path, 'r', encoding='utf-8').read().split('\n')
 train_img = []
@@ -24,3 +26,6 @@ def load_clean_cap(des, dataset):
                 dataset_des[key].append(desc)
                 
     return dataset_des
+
+doc = prep_cap.load_doc(cap_path)
+descriptions = prep_cap.load_cap(doc)
