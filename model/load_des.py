@@ -1,4 +1,5 @@
-import os 
+import os
+import string
 
 main_path = "...."
 image_dir = os.listdir(main_path)
@@ -35,3 +36,24 @@ class prep_cap():
             mapping[image_id].append(image_desc)
 
         return mapping    
+
+    def clean_des(des:dict):
+
+        table = str.maketrans('','', string.punctuation)
+
+        for key, desc_list in des.items():
+            for i in range(len(desc_list)):
+                desc = desc_list[i]
+                desc = desc.split()
+                desc = [word.lower() for word in desc]
+                desc = [w.translate(table) for w in desc]
+                desc = [word for word in desc if len(word)>1]
+                desc_list[i] = ''.join(desc)
+
+    def to_vocab(desc:dict):
+        words = set()
+
+        for key in desc.keys():
+            for line in desc[key]:
+                words.update(line.split())
+        return words
